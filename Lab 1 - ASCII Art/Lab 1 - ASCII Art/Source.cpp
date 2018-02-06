@@ -1,94 +1,37 @@
 #include <iostream>
-#include <time.h>
-#include <iomanip> 
+#include <string>
 
 using namespace std;
 
+int currentSlide = 0;
+
 void asciiSlide1()
 {
-	cout << R"(
-		      /\
-                     //\\
-                    //  \\
-                   //    \\
-                  //      \\
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      || 
-                  ||      ||
-                  ||      || 
-                  ||      ||
-                  ||      ||
-                  ||      || 
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||
-                  ||      ||                           
-                  ||      ||
-                  ||      ||
-                  //      \\
-                 //        \\   
-                //    /\    \\  
-               //    /  \    \\
-              ||    /____\    ||
-              ||   /\    /\   ||
-              \\  /  \  /  \  //
-               \\/____\/____\//
-    /\          \\          //          /\
-   /  \          \\        //          /  \
-  /    \          \\      //          /    \
- /      \         ||      ||         /      \
-/        \        ||      ||        /        \
-\        /        ||      ||        \        /
- \      /         ||      ||         \      /  
-  \     \        /    /\    \        /     /
-   \     \      /    /  \    \      /     /
-    \     \    /    /    \    \    /     /
-     \     \__/    /\    /\    \__/     /
-      \           / /\  /\ \           /
-       \         / /  \/  \ \         /
-        \       / /        \ \       /
-         \_____/  |########|  \_____/
-                  \        /        
-                   |------|                                
-                   |\    /|
-                   |\\  //|
-                   | \\// |
-                   |  //  |
-                   |\//\\/|
-                   |//  //|
-                   |/\\//\|
-                   |  //  |
-                   | //\\/|
-                   |//  \\|
-                   |/\\//\|
-                   |  //  |
-                   | //\\ |
-                   |//  \\|
-                   |/    \|
-                   |------|                                        
-                  /        \
-                  \        /
-                   |      |
-                   |      |
-                    \    /
-                     \  /
-                      \/            
- )" << '\n';
+	cout << R"(               ...
+             ;::::;
+           ;::::; :;
+         ;:::::'   :;
+        ;:::::;     ;.
+       ,:::::'       ;           OOO\
+       ::::::;       ;          OOOOO\
+       ;:::::;       ;         OOOOOOOO
+      ,;::::::;     ;'         / OOOOOOO
+    ;:::::::::`. ,,,;.        /  / DOOOOOO
+  .';:::::::::::::::::;,     /  /     DOOOO
+ ,::::::;::::::;;;;::::;,   /  /        DOOO
+;`::::::`'::::::;;;::::: ,#/  /          DOOO
+:`:::::::`;::::::;;::: ;::#  /            DOOO
+::`:::::::`;:::::::: ;::::# /              DOO
+`:`:::::::`;:::::: ;::::::#/               DOO
+ :::`:::::::`;; ;:::::::::##                OO
+ ::::`:::::::`;::::::::;:::#                OO
+ `:::::`::::::::::::;'`:;::#                O
+  `:::::`::::::::;' /  / `:#
+   ::::::`:::::;'  /  /   `#
+
+)" << '\n';
+
+	currentSlide = 1;
 }
 
 void asciiSlide2()
@@ -131,7 +74,11 @@ quu..__
                |     .:::::::::::`.         /
                |   .:::------------\       /
               /   .''               >::'  /
-              `',:                 :    .' )" << '\n';
+              `',:                 :    .' 
+
+)" << '\n';
+
+	currentSlide = 2;
 }
 
 void asciiSlide3()
@@ -182,7 +129,11 @@ E!!N!k     't!!!!!!!!!?:                       zTX?!t~ M!t!!!!!!!!!!!!!!UM!!!F 4
                                 K!!!!!!Z  K!!!!!!!!!!!!!!!!!!!!!!!  F!!!!!?!!?X!!!!!!!!!!!!!!!!!!!!!!!!!Z
                                X!!!!!!t  H!!!!!!!!!!!!!!!!!!!!!!!!> !!!!!!!!!!!W!!!!!!!!!!!!!!!!!!!!!!!t
                                %!!!!!!F :!!!!!!!!!!!!!!!!!!!!!!!!!> !!!!!!!!!!!!#X!!!!!!!!!!!!!!!!!!!!X
-                              '!!!!!!X  K!!!!!!!!!!!!!!!!!!!!!!!!!> K!!!!!!!!!!!!!?W!!!!!!!!!!!!!!!!X")" << '\n';
+                              '!!!!!!X  K!!!!!!!!!!!!!!!!!!!!!!!!!> K!!!!!!!!!!!!!?W!!!!!!!!!!!!!!!!X"
+
+)" << '\n';
+
+	currentSlide = 3;
 }
 
 void asciiSlide4()
@@ -238,25 +189,47 @@ void asciiSlide4()
 
 
   )" << '\n';
+
+	currentSlide = 4;
 }
 
 int main()
 {
 	bool running = true;
+	string userChoice;
 
 	while (running)
 	{
-		cout << "1 = Slide 1, 2 = Slide 2, 3 = Slide 3, 4 = Slide 4, x = Exit (Any other characters will not do anything)" << '\n';
-		char chosenSlide;
-		cin >> chosenSlide;
 
-		switch (chosenSlide)
+		cout << "1 = Slide 1, 2 = Slide 2, 3 = Slide 3, 4 = Slide 4, x = Exit, leave the prompt completely empty for the next slide" << '\n';
+		cout << "Choice: ";
+
+		getline(cin, userChoice);
+
+		if (!userChoice.empty())
 		{
-		case '1': asciiSlide1(); break;
-		case '2': asciiSlide2(); break;
-		case '3': asciiSlide3(); break;
-		case '4': asciiSlide4(); break;
-		case 'x': exit(0); break;
+			switch (userChoice.front())
+			{
+			case '1': asciiSlide1(); break;
+			case '2': asciiSlide2(); break;
+			case '3': asciiSlide3(); break;
+			case '4': asciiSlide4(); break;
+			case 'x': exit(0); break;
+			}
+		}
+		else
+		{
+			switch (currentSlide + 1)
+			{
+			case 1: asciiSlide1(); break;
+			case 2: asciiSlide2(); break;
+			case 3: asciiSlide3(); break;
+			case 4: asciiSlide4(); break;
+			case 5:
+			default:
+				asciiSlide1();
+				break;
+			}
 		}
 	}
 }
