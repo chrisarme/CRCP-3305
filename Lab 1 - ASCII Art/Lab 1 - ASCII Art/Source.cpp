@@ -200,6 +200,7 @@ int main()
 
 	while (running)
 	{
+		// NEED TO MAKE THIS LOOP WITHOUT INPUT
 
 		cout << "1 = Slide 1, 2 = Slide 2, 3 = Slide 3, 4 = Slide 4, x = Exit, leave the prompt completely empty for the next slide" << '\n';
 		cout << "Choice: ";
