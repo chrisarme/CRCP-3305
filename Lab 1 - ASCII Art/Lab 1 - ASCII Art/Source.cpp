@@ -1,9 +1,15 @@
 #include <iostream>
 #include <string>
+#include <cstdio>
+#include <ctime>
+#include <conio.h>
 
 using namespace std;
 
 int currentSlide = 0;
+clock_t start;
+
+// THIS MAY ONLY WORK IN WINDOWS!!!
 
 void asciiSlide1()
 {
@@ -200,37 +206,66 @@ int main()
 
 	while (running)
 	{
-		// NEED TO MAKE THIS LOOP WITHOUT INPUT
+		//cout << "1 = Slide 1, 2 = Slide 2, 3 = Slide 3, 4 = Slide 4, x = Exit, leave the prompt completely empty for the next slide" << '\n';
+		//cout << "Choice: ";
 
-		cout << "1 = Slide 1, 2 = Slide 2, 3 = Slide 3, 4 = Slide 4, x = Exit, leave the prompt completely empty for the next slide" << '\n';
-		cout << "Choice: ";
 
-		getline(cin, userChoice);
 
-		if (!userChoice.empty())
+		//getline(cin, userChoice);
+
+
+		if (!_kbhit())
 		{
-			switch (userChoice.front())
+			if (((clock() - start) % 6000 == 0) || clock() - start == 0)
 			{
-			case '1': asciiSlide1(); break;
-			case '2': asciiSlide2(); break;
-			case '3': asciiSlide3(); break;
-			case '4': asciiSlide4(); break;
-			case 'x': exit(0); break;
+				switch (currentSlide + 1)
+				{
+				case 1: asciiSlide1(); break;
+				case 2: asciiSlide2(); break;
+				case 3: asciiSlide3(); break;
+				case 4: asciiSlide4(); break;
+				case 5:
+				default:
+					asciiSlide1();
+					break;
+				}
+
+				cout << "Press any key to manually choose a slide" << endl;
 			}
 		}
 		else
 		{
-			switch (currentSlide + 1)
+			cout << "1 = Slide 1, 2 = Slide 2, 3 = Slide 3, 4 = Slide 4, x = Exit, leave the prompt completely empty for the next slide" << '\n';
+			cout << "Choice: ";
+			cin >> userChoice;
+
+			if (!userChoice.empty())
 			{
-			case 1: asciiSlide1(); break;
-			case 2: asciiSlide2(); break;
-			case 3: asciiSlide3(); break;
-			case 4: asciiSlide4(); break;
-			case 5:
-			default:
-				asciiSlide1();
-				break;
+				switch (userChoice.front())
+				{
+				case '1': asciiSlide1(); break;
+				case '2': asciiSlide2(); break;
+				case '3': asciiSlide3(); break;
+				case '4': asciiSlide4(); break;
+				case 'x': exit(0); break;
+				}
 			}
+			else
+			{
+				switch (currentSlide + 1)
+				{
+				case 1: asciiSlide1(); break;
+				case 2: asciiSlide2(); break;
+				case 3: asciiSlide3(); break;
+				case 4: asciiSlide4(); break;
+				case 5:
+				default:
+					asciiSlide1();
+					break;
+				}
+			}
+			cout << "Press any key to manually choose a slide" << endl;
+			start = clock() - 1;
 		}
 	}
 }
