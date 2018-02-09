@@ -20,56 +20,104 @@ Student emptyInfoHolder();
 
 int main()
 {
+	bool firstRun = true;
 	int userChoice;
 	vector<Student> students;
 	Student tempNewStudentInfoHolder;
 
+	students = createStartingData();
+
 	while (true)
 	{
-		students = createStartingData();
-
-		cout << "------------------Student Info Database------------------" << endl << endl;
+		cout << endl << "------------------Student Info Database------------------" << endl << endl;
 		cout << "1 = Add, 2 = Delete, 3 = View" << endl;
 		cout << "Choice: ";
 
 		cin.clear();
+
+		if (!firstRun)
+		{
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		}
+
+		firstRun = false;
+
 		cin >> userChoice;
 
 		switch (userChoice)
 		{
-		case 1: break;
+		case 1: 
+			cin.clear();
+
+			cout << "Adding New Student" << endl;
+
+			cout << "Name: ";
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			cin >> tempNewStudentInfoHolder.studentName;
+
+			cout << "Gender: ";
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			cin >> tempNewStudentInfoHolder.gender;
+
+			cout << "Age: ";
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			cin >> tempNewStudentInfoHolder.age;
+
+			cout << "ID: ";
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			cin >> tempNewStudentInfoHolder.id;
+
+			cout << "GPA: ";
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			cin >> tempNewStudentInfoHolder.gpa;
+
+			students.push_back(tempNewStudentInfoHolder);
+			tempNewStudentInfoHolder = emptyInfoHolder();
+
+			cout << endl << endl << endl << "------------NEW STUDENT INFO------------" << endl << endl;
+
+			cout << "Database Number: " << students.size() << endl;
+			cout << "Name: " << students.back().studentName << endl;
+			cout << "Gender: " << (students.back().gender == 'M' ? "Male" : "Female") << endl;
+			cout << "Age: " << students.back().age << endl;
+			cout << "ID: " << students.back().id << endl;
+			cout << "GPA: " << students.back().gpa << endl << endl << endl;
+			break;
+		case 2: 
+		deleteStudent:
+			char userChar;
+
+			cout << endl << endl << "Enter Database Number To Delete (Enter x to return)" << endl;
+			cout << "Student Database Number: ";
+
+			cin.clear();
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+			cin >> userChar;
+
+			if (isdigit(userChar))
+			{
+				int position = userChar - '0' - 1;
+				if ((position < students.size()))
+				{
+					students.erase(students.begin() + position);
+					outputStudentData(students);
+				}
+				else
+				{
+					cout << endl << endl << "* ERROR: Database Number not found, please enter a valid number *" << endl << endl;
+				}
+			}
+			else
+			{
+				cout << endl << endl << "* ERROR: Please enter a valid number *" << endl << endl;
+				goto deleteStudent;
+			}
+			break;
 		case 3: outputStudentData(students); break;
 		}
 		// ADD, DELETE, ETC
 
-		cin.clear();
-
-		cout << "Adding New Student" << endl;
-
-		cout << "Name: ";
-		cin.ignore();
-		cin >> tempNewStudentInfoHolder.studentName;
-
-		cout << "Gender: ";
-		cin.ignore();
-		cin >> tempNewStudentInfoHolder.gender;
-
-		cout << "Age: ";
-		cin.ignore();
-		cin >> tempNewStudentInfoHolder.age;
-
-		cout << "ID: ";
-		cin.ignore();
-		cin >> tempNewStudentInfoHolder.id;
-
-		cout << "GPA: ";
-		cin.ignore();
-		cin >> tempNewStudentInfoHolder.gpa;
-
-		students.push_back(tempNewStudentInfoHolder);
-		tempNewStudentInfoHolder = emptyInfoHolder();
-
-		outputStudentData(students);
+		//outputStudentData(students);
 	}
 	system("PAUSE");
 	return 0;
