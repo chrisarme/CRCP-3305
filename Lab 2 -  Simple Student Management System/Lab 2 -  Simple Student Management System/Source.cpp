@@ -107,29 +107,74 @@ public:
 		double studentGPA;
 		Student tempNewStudentInfoHolder;
 
+		bool valueFlags[3] = { false };
+		// 0 = age value, 1 = id value, 2 = gpa value
+		// These all need to be correct ( = true) to finish adding the student
+
 		cin.clear();
 
-		cout << "Adding New Student" << endl;
+		cout << endl << "Adding New Student" << endl;
 
 		cout << "Name: ";
 		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 		getline(cin, studentName);
 
 		cout << "Gender: ";
-		//cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 		cin >> studentGender;
 
-		cout << "Age: ";
-		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-		cin >> studentAge;
+		while (!valueFlags[0])
+		{
+			cout << "Age: ";
+			cin >> studentAge;
 
-		cout << "ID: ";
-		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-		cin >> studentID;
+			if (!cin)
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 
-		cout << "GPA: ";
-		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-		cin >> studentGPA;
+				cout << endl << "* ERROR: Please enter a valid number *" << endl;
+			}
+			else
+			{
+				valueFlags[0] = true;
+			}
+		}
+
+		while (!valueFlags[1])
+		{
+			cout << "ID: ";
+			cin >> studentID;
+
+			if (!cin)
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+
+				cout << endl << "* ERROR: Please enter a valid number *" << endl;
+			}
+			else
+			{
+				valueFlags[1] = true;
+			}
+		}
+		
+		while (!valueFlags[2])
+		{
+			cout << "GPA: ";
+			cin >> studentGPA;
+
+			if (!cin)
+			{
+				cin.clear();
+				cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+
+				cout << endl << "* ERROR: Please enter a valid number *" << endl;
+			}
+			else
+			{
+				valueFlags[2] = true;
+			}
+		}
 
 		tempNewStudentInfoHolder = Student(studentName, studentGender, studentAge, studentID, studentGPA);
 
@@ -145,10 +190,23 @@ public:
 		cout << "GPA: " << studentGPA << endl << endl << endl;
 	}
 
+	void outputSpecificStudentData(int indexNumber)
+	{
+		cout << endl << "--------------STUDENT INFO--------------" << endl << endl;
+
+		cout << "Database Number: " << indexNumber + 1 << endl;
+		cout << "Name: " << students[indexNumber].getStudentName() << endl;
+		cout << "Gender: " << (students[indexNumber].getGender() == 'M' ? "Male" : "Female") << endl;
+		cout << "Age: " << students[indexNumber].getAge() << endl;
+		cout << "ID: " << students[indexNumber].getId() << endl;
+		cout << "GPA: " << students[indexNumber].getGPA() << endl << endl << endl;
+	}
+
 	void deleteStudent()
 	{
 	deleteStudent:
 		char userChar;
+		char userConfirmation;
 
 		cout << endl << endl << "Enter Database Number To Delete (Enter x to return)" << endl;
 		cout << "Student Database Number: ";
@@ -162,8 +220,22 @@ public:
 			int position = userChar - '0' - 1;
 			if ((position < students.size()))
 			{
-				students.erase(students.begin() + position);
-				outputStudentData();
+				cout << endl << "Are you sure you want to delete this student?" << endl;
+				outputSpecificStudentData(position);
+
+				cout << "[y/n]: ";
+				cin >> userConfirmation;
+
+				switch (userConfirmation)
+				{
+				case 'y':
+					students.erase(students.begin() + position);
+					outputStudentData();
+					break;
+				case 'n': 
+					cout << "Canceling deletion..." << endl;
+					break;
+				}
 			}
 			else
 			{
@@ -226,46 +298,45 @@ public:
 
 int main()
 {
-	bool firstRun = true;
+	bool shouldRun = true;
 	int userChoice;
 	System studentSystem;
 	
 	studentSystem.createStartingData();
-	
-	// CHECK FOR USER INPUTS BEFORE WHILE LOOPS 
-	// IF 4 --> WHILE (FALSE)
 
-	while (true)
+	while (shouldRun)
 	{
 		studentSystem.createChoiceList();
 
-		cin.clear();
-
-		if (!firstRun)
-		{
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-		}
-
-		firstRun = false;
-
 		cin >> userChoice;
 
-		switch (userChoice)
+		if (userChoice == 4)
 		{
-		case 1: 
-			studentSystem.createNewStudent();
-			break;
-		case 2: 
-			studentSystem.deleteStudent();
-			break;
-		case 3: studentSystem.outputStudentData(); break;
-		case 4: exit(0); break;
+			shouldRun = false;
 		}
 
-		system("PAUSE");
-		system("cls");
+		if (shouldRun)
+		{
+			switch (userChoice)
+			{
+			case 1:
+				studentSystem.createNewStudent();
+				break;
+			case 2:
+				studentSystem.deleteStudent();
+				break;
+			case 3: studentSystem.outputStudentData(); break;
+			//case 4: exit(0); break;
+			}
+
+			system("PAUSE");
+			system("cls");
+		}
+
+		cin.clear();
+		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 	}
 
 	system("PAUSE");
-	return 1;
+	return 0;
 }

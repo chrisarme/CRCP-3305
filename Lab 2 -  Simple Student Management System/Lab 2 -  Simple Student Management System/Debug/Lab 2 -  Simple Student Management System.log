@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-c:\users\chris\documents\github\crcp-3305\lab 2 -  simple student management system\lab 2 -  simple student management system\source.cpp(169): warning C4018: '<': signed/unsigned mismatch
+c:\users\chris\documents\github\crcp-3305\lab 2 -  simple student management system\lab 2 -  simple student management system\source.cpp(221): warning C4018: '<': signed/unsigned mismatch
   Lab 2 -  Simple Student Management System.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\Lab 2 -  Simple Student Management System\Debug\Lab 2 -  Simple Student Management System.exe
   Lab 2 -  Simple Student Management System.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\Lab 2 -  Simple Student Management System\Debug\Lab 2 -  Simple Student Management System.pdb (Partial PDB)
