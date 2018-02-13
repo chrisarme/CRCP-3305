@@ -326,7 +326,9 @@ int main()
 				studentSystem.deleteStudent();
 				break;
 			case 3: studentSystem.outputStudentData(); break;
-			//case 4: exit(0); break;
+			default:
+				cout << "* Error: Option not found. Please enter one of the available choices. *" << endl;
+				break;
 			}
 
 			system("PAUSE");
