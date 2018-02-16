@@ -1,5 +1,5 @@
 ﻿  Source.cpp
-c:\users\chris\documents\github\crcp-3305\rpg game test\rpg game test\source.cpp(47): warning C4018: '<': signed/unsigned mismatch
-c:\users\chris\documents\github\crcp-3305\rpg game test\rpg game test\source.cpp(55): warning C4018: '<': signed/unsigned mismatch
+c:\users\chris\documents\github\crcp-3305\rpg game test\rpg game test\source.cpp(48): warning C4018: '<': signed/unsigned mismatch
+c:\users\chris\documents\github\crcp-3305\rpg game test\rpg game test\source.cpp(56): warning C4018: '<': signed/unsigned mismatch
   RPG Game Test.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\RPG Game Test\Debug\RPG Game Test.exe
   RPG Game Test.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\RPG Game Test\Debug\RPG Game Test.pdb (Partial PDB)
