@@ -21,11 +21,14 @@ void ofApp::draw(){
 	ofSetColor(231, 214, 196);
 	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 10, 320);
 
-	ofSetColor(88, 86, 65, 100);
-	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2), 150);
+	ofSetColor(88, 86, 65, 200);
+	ofDrawCircle((ofGetWidth() / 2) - 20, (ofGetHeight() / 2) + 15, 110);
 
-	ofSetColor(15, 114, 93, 100);
-	ofDrawCircle((ofGetWidth() / 2) + 150, (ofGetHeight() / 2), 150);
+	ofSetColor(15, 114, 93, 200);
+	ofDrawCircle((ofGetWidth() / 2) + 130, (ofGetHeight() / 2) - 40, 95);
+
+	ofSetColor(232, 166, 170, 200);
+	ofDrawCircle((ofGetWidth() / 2) - 90, (ofGetHeight() / 2) - 160, 80);
 
 }
 
