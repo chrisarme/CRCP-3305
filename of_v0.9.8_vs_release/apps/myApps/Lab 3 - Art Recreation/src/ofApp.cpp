@@ -97,7 +97,7 @@ void ofApp::draw(){
 	ofNoFill();
 	ofDrawCircle(226, 322, 67);
 
-	ofSetColor(246, 214, 95, 200);
+	ofSetColor(246, 214, 95, 175);
 	ofSetLineWidth(1);
 	ofFill();
 	ofDrawCircle(226, 322, 66);
@@ -108,7 +108,7 @@ void ofApp::draw(){
 	ofNoFill();
 	ofDrawCircle(385, 270, 67);
 
-	ofSetColor(15, 114, 93, 200);
+	ofSetColor(15, 114, 93, 150);
 	ofSetLineWidth(1);
 	ofFill();
 	ofDrawCircle(385, 270, 66);
@@ -124,27 +124,44 @@ void ofApp::draw(){
 	ofFill();
 	ofDrawCircle(272, 310, 85);
 
-	// Pink circle
-	ofSetColor(75);
-	ofSetLineWidth(2);
-	ofNoFill();
-	ofDrawCircle(224, 178, 57);
-
-	ofSetColor(232, 166, 170, 200);
-	ofSetLineWidth(1);
-	ofFill();
-	ofDrawCircle(224, 178, 56);
-
 	// Larger Red circle
 	ofSetColor(85);
 	ofSetLineWidth(2);
 	ofNoFill();
 	ofDrawCircle(296, 205, 47);
 
-	ofSetColor(227, 27, 48, 200);
+	ofSetColor(227, 27, 48, 150);
 	ofSetLineWidth(1);
 	ofFill();
 	ofDrawCircle(296, 205, 46);
+
+	// Pink circle
+	ofSetColor(75);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(224, 178, 57);
+
+	ofSetColor(232, 166, 170, 150);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(224, 178, 56);
+
+	// small orange circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(5);
+	ofNoFill();
+	ofDrawCircle(266, 268, 30);
+
+	ofSetColor(240, 100, 68, 125);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(266, 268, 29);
+
+	// Small black center of yellow small yellow(?) circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(266, 268, 8);
 }
 
 //--------------------------------------------------------------
