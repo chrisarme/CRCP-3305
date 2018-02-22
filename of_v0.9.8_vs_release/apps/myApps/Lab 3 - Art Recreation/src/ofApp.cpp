@@ -150,7 +150,7 @@ void ofApp::draw(){
 	ofSetColor(39, 24, 29);
 	ofSetLineWidth(5);
 	ofNoFill();
-	ofDrawCircle(266, 268, 30);
+	ofDrawCircle(266, 268, 31);
 
 	ofSetColor(240, 100, 68, 125);
 	ofSetLineWidth(1);
@@ -162,6 +162,151 @@ void ofApp::draw(){
 	ofSetLineWidth(1);
 	ofFill();
 	ofDrawCircle(266, 268, 8);
+
+	// small green/grey circle
+	ofSetColor(85);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(224, 238, 32);
+
+	ofSetColor(88, 86, 65, 125);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(224, 238, 31);
+
+	// tiny red circle
+	ofSetColor(85);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(292, 343, 9);
+
+	ofSetColor(227, 27, 48, 150);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(292, 343, 8);
+
+	// medium red circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(211, 376, 26);
+
+	ofSetColor(227, 27, 48, 150);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(211, 376, 25);
+
+	// medium yellow circle
+	ofSetColor(60);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(364, 357, 45);
+
+	ofSetColor(246, 214, 95, 175);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(364, 357, 44);
+
+	// medium blue circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(4);
+	ofNoFill();
+	ofDrawCircle(162, 337, 20);
+
+	ofSetColor(76, 144, 131, 150);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(162, 337, 19);
+
+	// small red circle with large border
+	// WHY DOES THIS BORDER LOOK SO BAD???????
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(7);
+	ofNoFill();
+	ofDrawCircle(123, 268, 15);
+
+	ofSetColor(227, 27, 48, 150);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(123, 268, 12);
+
+	// tiny blue circle with large border
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(3);
+	ofNoFill();
+	ofDrawCircle(94, 332, 7);
+
+	ofSetColor(40, 62, 111, 200);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(94, 332, 6);
+
+	// small red circle
+	ofSetColor(95);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(129, 413, 16);
+	
+	ofSetColor(227, 27, 48, 125);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(129, 413, 15);
+
+	// small pink circle with large border
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(3);
+	ofNoFill();
+	ofDrawCircle(316, 465, 16);
+
+	ofSetColor(227, 27, 48, 125);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(316, 465, 15);
+
+	// tiny yellow circle
+	ofSetColor(125);
+	ofSetLineWidth(1);
+	ofNoFill();
+	ofDrawCircle(342, 422, 6);
+
+	ofSetColor(246, 214, 95, 150);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(342, 422, 6);
+
+	// tiny red circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(1);
+	ofNoFill();
+	ofDrawCircle(277, 408, 5);
+
+	ofSetColor(227, 27, 48, 125);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(277, 408, 5);
+
+	// tiny black circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(239, 420, 4);
+
+	// tinyish pink circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(446, 411, 11);
+
+	ofSetColor(227, 27, 48, 175);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(446, 411, 10);
+
+	// small black circle
+	ofSetColor(39, 24, 29);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(390, 386, 12);
 }
 
 //--------------------------------------------------------------
