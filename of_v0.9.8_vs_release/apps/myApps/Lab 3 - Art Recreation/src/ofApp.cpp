@@ -4,7 +4,6 @@
 void ofApp::setup(){
 	ofSetBackgroundColor(231, 214, 196);
 	ofEnableSmoothing();
-	ofEnableAntiAliasing();
 	ofSetCircleResolution(100);
 }
 
@@ -15,39 +14,82 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-	// Beams
+	// This will not work properly in any other window size besides the original one
+	// For size 1114 x 1152
+	/* 
 	ofFill();
-	ofSetColor(211, 172, 117, 200);
+	ofSetColor(20, 20, 20);
+	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 30, 460);
+	
+	ofSetColor(231, 214, 196);
+	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 30, 420);
 
-	ofSetPolyMode(OF_POLY_WINDING_NONZERO);
-	ofBeginShape();
-		ofVertex(0, 435);
-		ofVertex(0, ofGetHeight());
-		ofVertex(44, ofGetHeight());
-		ofVertex(ofGetWidth(), 0);
-		ofVertex(533, 0);
-	ofEndShape();
+	// Larger yellow circle
+	ofSetColor(75);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(420, 580, 120);
 
-	ofSetColor(65, 126, 111, 200);
+	ofSetColor(246, 214, 95, 200);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(420, 580, 119);
 
-	ofBeginShape();
-	ofVertex(192, 0);
-	ofVertex(106, 0);
-	ofVertex(ofGetWidth(), 568);
-	ofVertex(ofGetWidth(), 351);
-	ofEndShape();
+	// Green circle
+	ofSetColor(85);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(700, 450, 120);
+
+	ofSetColor(15, 114, 93, 200);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(700, 450, 119);
+
+	// grey/green circle 
+	ofSetColor(85);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(510, 550, 150);
+
+	ofSetColor(88, 86, 65, 200);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(533, 600, 165);
+
+	// Pink circle
+	ofSetColor(75);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(400, 320, 105);
+
+	ofSetColor(232, 166, 170, 200);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(400, 320, 104);
+
+	// Red circle
+	ofSetColor(85);
+	ofSetLineWidth(2);
+	ofNoFill();
+	ofDrawCircle(523, 363, 85);
+
+	ofSetColor(227, 27, 48, 200);
+	ofSetLineWidth(1);
+	ofFill();
+	ofDrawCircle(523, 363, 84);
+
+	*/
+	
+	// For 575 x 595 size
 
 	// Outer circle
-	ofNoFill();
-	ofSetColor(20, 19, 25);
-	ofSetLineWidth(20);
+	ofFill();
+	ofSetColor(20, 20, 20);
 	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 10, 260);
-	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 10, 250);
-	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 10, 245);
 
-	/*ofSetColor(231, 214, 196);
-	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 10, 240);*/
+	ofSetColor(231, 214, 196);
+	ofDrawCircle(ofGetWidth() / 2, (ofGetHeight() / 2) - 10, 240);
 
 	// Larger yellow circle
 	ofSetColor(75);
@@ -265,90 +307,6 @@ void ofApp::draw(){
 	ofSetLineWidth(1);
 	ofFill();
 	ofDrawCircle(390, 386, 12);
-
-	// medium black circle
-	ofSetColor(39, 24, 29);
-	ofSetLineWidth(1);
-	ofFill();
-	ofDrawCircle(349, 188, 18);
-
-	// small black circle
-	ofSetColor(39, 24, 29);
-	ofSetLineWidth(1);
-	ofFill();
-	ofDrawCircle(392, 235, 12);
-
-	// medium purple circle
-	ofSetColor(80);
-	ofSetLineWidth(2);
-	ofNoFill();
-	ofDrawCircle(391, 161, 33);
-
-	ofSetColor(121, 66, 85, 180);
-	ofSetLineWidth(1);
-	ofFill();
-	ofDrawCircle(391, 161, 32);
-
-	// medium blue circle
-	ofSetColor(39, 24, 29);
-	ofSetLineWidth(2);
-	ofNoFill();
-	ofDrawCircle(441, 275, 25);
-
-	ofSetColor(12, 91, 108, 180);
-	ofSetLineWidth(1);
-	ofFill();
-	ofDrawCircle(441, 275, 24);
-
-	// tiny red circle with border
-	ofSetColor(227, 27, 48, 200);
-	ofSetLineWidth(1);
-	ofFill();
-	ofDrawCircle(267, 81, 5);
-
-	ofSetColor(39, 24, 29);
-	ofSetLineWidth(3);
-	ofNoFill();
-	ofDrawCircle(267, 81, 6);
-
-	// LINES
-	ofSetColor(39, 24, 29);
-
-	ofSetLineWidth(.5);
-	ofDrawLine(106, 339, 454, 380);
-	ofDrawLine(82, 244, 459, 348);
-	ofDrawLine(399, 122, 346, 457);
-	ofDrawLine(361, 487, 420, 113);
-	ofDrawLine(153, 454, 340, 197);
-	ofDrawLine(164, 458, 346, 193);
-
-	ofSetLineWidth(1);
-	ofDrawLine(105, 312, 266, 162);
-	ofDrawLine(175, 117, 474, 355);
-	ofDrawLine(85, 234, 462, 335);
-	ofDrawLine(112, 314, 393, 458);
-	ofDrawLine(293, 128, 316, 156);
-	ofDrawLine(301, 119, 321, 148);
-	ofDrawLine(140, 437, 252, 417);
-	ofDrawLine(168, 409, 246, 453);
-	ofDrawLine(332, 446, 384, 415);
-	ofDrawLine(336, 455, 386, 422);
-	ofDrawLine(340, 462, 392, 430);
-	ofDrawLine(83, 264, 107, 223);
-	ofDrawLine(89, 261, 117, 224);
-	ofDrawLine(140, 277, 151, 241);
-	ofDrawLine(409, 121, 354, 470);
-
-	ofSetLineWidth(2);
-	ofDrawLine(133, 150, 475, 207);
-	ofDrawLine(132, 367, 318, 125);
-	ofDrawLine(189, 459, 403, 102);
-	ofDrawLine(79, 290, 482, 370);
-	ofDrawLine(415, 209, 439, 209);
-	ofDrawLine(416, 217, 449, 217);
-
-	ofSetLineWidth(3);
-	ofDrawLine(421, 187, 423, 418);
 }
 
 //--------------------------------------------------------------
