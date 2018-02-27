@@ -25,5 +25,7 @@ class ofApp : public ofBaseApp{
 		double squarePosition = 0;
 
 		ofTrueTypeFont myFont;
+		double colorNumber = 0;
+		double rainbowColor[3];
 		
 };

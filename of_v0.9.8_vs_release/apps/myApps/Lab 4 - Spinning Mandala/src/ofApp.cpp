@@ -25,6 +25,17 @@ void ofApp::update()
 	{
 		squarePosition = 0;
 	}
+
+	colorNumber += .001;
+
+	if (colorNumber >= 24)
+	{
+		colorNumber = 1;
+	}
+
+	rainbowColor[0] = 128 + ((sin((colorNumber*.8 + 0)*1.3) * 128));
+	rainbowColor[1] = 128 + ((sin((colorNumber*.8 + 1)*1.3) * 128));
+	rainbowColor[2] = 128 + ((sin((colorNumber*.8 + 2)*1.3) * 128));
 }
 
 //--------------------------------------------------------------
@@ -58,8 +69,20 @@ void ofApp::draw()
 			ofDrawCircle(50, 50, 25);
 		ofPopMatrix();
 	}
-	
-	myFont.drawString("Chris Arme", 0, 350);
+
+	// large shape
+	ofSetColor(rainbowColor[0], rainbowColor[1], rainbowColor[2]);
+	ofSetLineWidth(5);
+	ofNoFill();
+
+	ofPushMatrix();
+		ofRotate(shapeRotate * 3);
+		ofDrawRectangle(-150, -150, 300, 300);
+	ofPopMatrix();
+
+	// Signiture
+	ofSetColor(0);
+	myFont.drawString("Chris Arme", 120, 370);
 }
 
 //--------------------------------------------------------------
