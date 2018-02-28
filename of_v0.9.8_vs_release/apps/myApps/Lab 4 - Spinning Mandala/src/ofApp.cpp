@@ -72,12 +72,16 @@ void ofApp::draw()
 
 	// large shape
 	ofSetColor(rainbowColor[0], rainbowColor[1], rainbowColor[2]);
-	ofSetLineWidth(5);
+	ofSetLineWidth(6);
 	ofNoFill();
 
 	ofPushMatrix();
 		ofRotate(shapeRotate * 3);
 		ofDrawRectangle(-150, -150, 300, 300);
+	ofPopMatrix();
+
+	ofPushMatrix();
+	drawStar(0, 0);
 	ofPopMatrix();
 
 	// Signiture

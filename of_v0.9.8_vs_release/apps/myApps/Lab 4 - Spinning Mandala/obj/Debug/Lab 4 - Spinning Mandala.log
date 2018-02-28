@@ -1,5 +1,5 @@
-﻿  ofApp.cpp
-     Creating library bin\Lab 4 - Spinning Mandala_debug.lib and object bin\Lab 4 - Spinning Mandala_debug.exp
+﻿  main.cpp
+  ofApp.cpp
   Lab 4 - Spinning Mandala.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\of_v0.9.8_vs_release\apps\myApps\Lab 4 - Spinning Mandala\bin\Lab 4 - Spinning Mandala_debug.exe
   Lab 4 - Spinning Mandala.vcxproj -> bin\Lab 4 - Spinning Mandala_debug.pdb (Full PDB)
   

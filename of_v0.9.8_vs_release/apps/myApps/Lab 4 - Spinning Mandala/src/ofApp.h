@@ -28,4 +28,15 @@ class ofApp : public ofBaseApp{
 		double colorNumber = 0;
 		double rainbowColor[3];
 		
+		void drawStar(double midX, double midY)
+		{
+			ofBeginShape();
+			for (int i = 0; i < 2; i++)
+			{
+				ofVertex((25 * cos(45 * i)) + (50 * cos(75 + (45 * i))), (25 * sin(45 * i)) + (50 * sin(75 + (45 * i))));
+				ofVertex((25 * cos(45 * i)) + (75 * cos(90 + (45 * i))), (25 * sin(45 * i)) + (75 * sin(90 + (45 * i))));
+				ofVertex((25 * cos(45 * i)) + (50 * cos(105 + (45 * i))), (25 * sin(45 * i)) + (50 * sin(105 + (45 * i))));
+			}
+			ofEndShape();
+		};
 };
