@@ -1,5 +1,17 @@
 #include "ofApp.h"
 
+void ofApp::drawStar(double midX, double midY)
+{
+	ofBeginShape();
+	for (int i = 0; i < 2; i++)
+	{
+		ofVertex(199 * cos(75 + (45 * i)), (199 * sin(75 + (45 * i))));
+		ofVertex((20 * cos(90 + (45 * i))), (20 * sin(90 + (45 * i))));
+		ofVertex((199 * cos(105 + (45 * i))), (199 * sin(105 + (45 * i))));
+	}
+	ofEndShape();
+};
+
 //--------------------------------------------------------------
 void ofApp::setup()
 {
@@ -80,9 +92,9 @@ void ofApp::draw()
 		ofDrawRectangle(-150, -150, 300, 300);
 	ofPopMatrix();
 
-	ofPushMatrix();
+	/*ofPushMatrix();
 	drawStar(0, 0);
-	ofPopMatrix();
+	ofPopMatrix();*/
 
 	// Signiture
 	ofSetColor(0);
