@@ -2,7 +2,9 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	ofNoFill();
+	//ofNoFill();
+
+	sinNumber = 0;
 }
 
 //--------------------------------------------------------------
@@ -10,6 +12,7 @@ void ofApp::update(){
 
 }
 
+/*
 // practice
 void ofApp::drawCircle(int x, int y, int r)
 {
@@ -28,26 +31,54 @@ int ofApp::fibonacciSequence(int n)
 	if (n == 1) { return 1; }
 
 	return fibonacciSequence(n - 1) + fibonacciSequence(n - 2);
-}
+}*/
 
 void ofApp::drawStick(int x1, int y1, int x2, int y2, int length)
 {
 	if (length > 10)
 	{
-		ofRotate(10);
 		ofPushMatrix();
-			ofTranslate(x1, y1);
+		ofRotate(15);
 			ofDrawLine(0, 0, 0, -length);
+			ofTranslate(0, -length);
+			drawStick(x1, y1 - length, 0, 0, length - 10);
 		ofPopMatrix();
-		drawStick(x1, y1 - length, 0, 0, length - 20);
+
+		ofPushMatrix();
+		ofRotate(-15);
+			ofDrawLine(0, 0, 0, -length);
+			ofTranslate(0, -length);
+			drawStick(x1, y1 - length, 0, 0, length - 10);
+		ofPopMatrix();
 	}
+}
+
+void ofApp::drawBackground()
+{
+	ofPushMatrix();
+	ofTranslate(30, ofGetHeight());
+	for (int i = 0; i < 25; i++)
+	{
+		ofDrawRectangle(0, 0, 10, -300 + (sin(sinNumber + (.6 * i)) * 30));
+		ofTranslate(40, 0);
+	}
+	ofPopMatrix();
+
+	//ofDrawRectangle(20, ofGetWidth(), 40, ofGetWidth() - 300);
+
+	sinNumber += .05;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	//ofTranslate(ofGetWidth() / 2, ofGetHeight());
-	//drawCircle(0, 0, ofGetWidth() / 4);
-	drawStick(ofGetWidth() / 2, ofGetHeight(), 0, 0, 100);
+	ofSetColor(125, 255, 125);
+	drawBackground();
+
+	ofPushMatrix();
+		ofTranslate(ofGetWidth() / 2, ofGetHeight());
+		ofSetColor(0);
+		drawStick(0, 0, 0, 0, 101);
+	ofPopMatrix();
 }
 
 //--------------------------------------------------------------

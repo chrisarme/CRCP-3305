@@ -21,9 +21,10 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		void drawCircle(int x, int y, int r);
-		int fibonacciSequence(int n);
+		/*void drawCircle(int x, int y, int r);
+		int fibonacciSequence(int n);*/
 		void drawStick(int x1, int y1, int x2, int y2, int length);
-	
-		
+		void drawBackground();
+
+		double sinNumber;
 };
