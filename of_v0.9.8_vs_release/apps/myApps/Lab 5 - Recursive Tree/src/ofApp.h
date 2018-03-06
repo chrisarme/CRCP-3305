@@ -23,8 +23,9 @@ class ofApp : public ofBaseApp{
 
 		/*void drawCircle(int x, int y, int r);
 		int fibonacciSequence(int n);*/
-		void drawStick(int x1, int y1, int x2, int y2, int length);
+		void drawStick(int x1, int y1, int length);
 		void drawBackground();
 
 		double sinNumber;
+		int timeRepeated;
 };

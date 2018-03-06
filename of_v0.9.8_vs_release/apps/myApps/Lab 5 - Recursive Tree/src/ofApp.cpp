@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//ofNoFill();
-
+	timeRepeated = 0;
 	sinNumber = 0;
 }
 
@@ -33,7 +33,7 @@ int ofApp::fibonacciSequence(int n)
 	return fibonacciSequence(n - 1) + fibonacciSequence(n - 2);
 }*/
 
-void ofApp::drawStick(int x1, int y1, int x2, int y2, int length)
+void ofApp::drawStick(int x1, int y1, int length)
 {
 	if (length > 10)
 	{
@@ -41,14 +41,16 @@ void ofApp::drawStick(int x1, int y1, int x2, int y2, int length)
 		ofRotate(15);
 			ofDrawLine(0, 0, 0, -length);
 			ofTranslate(0, -length);
-			drawStick(x1, y1 - length, 0, 0, length - 10);
+			timeRepeated += 5;
+			drawStick(x1, y1 - length, length - 10);
 		ofPopMatrix();
 
 		ofPushMatrix();
 		ofRotate(-15);
 			ofDrawLine(0, 0, 0, -length);
 			ofTranslate(0, -length);
-			drawStick(x1, y1 - length, 0, 0, length - 10);
+			timeRepeated += 5;
+			drawStick(x1, y1 - length, length - 10);
 		ofPopMatrix();
 	}
 }
@@ -77,7 +79,7 @@ void ofApp::draw(){
 	ofPushMatrix();
 		ofTranslate(ofGetWidth() / 2, ofGetHeight());
 		ofSetColor(0);
-		drawStick(0, 0, 0, 0, 101);
+		drawStick(0, 0, 101);
 	ofPopMatrix();
 }
 
