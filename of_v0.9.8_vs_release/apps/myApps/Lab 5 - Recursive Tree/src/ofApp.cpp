@@ -3,8 +3,14 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//ofNoFill();
+	ofSetFrameRate(60);
+
 	timeRepeated = 0;
 	sinNumber = 0;
+	number = .05;
+	treeSeed = (rand() % 100 + 1);
+
+	greenColor = ofColor(0, 175, 0);
 }
 
 //--------------------------------------------------------------
@@ -33,30 +39,44 @@ int ofApp::fibonacciSequence(int n)
 	return fibonacciSequence(n - 1) + fibonacciSequence(n - 2);
 }*/
 
-void ofApp::drawStick(int x1, int y1, int length)
+void ofApp::drawStick(int x1, int y1, int length, double lineWidth, ofColor baseColor, double mult)
 {
-	if (length > 10)
-	{
-		ofPushMatrix();
-		ofRotate(15);
-			ofDrawLine(0, 0, 0, -length);
-			ofTranslate(0, -length);
-			timeRepeated += 5;
-			drawStick(x1, y1 - length, length - 10);
-		ofPopMatrix();
+	ofPushStyle();
 
-		ofPushMatrix();
-		ofRotate(-15);
-			ofDrawLine(0, 0, 0, -length);
-			ofTranslate(0, -length);
-			timeRepeated += 5;
-			drawStick(x1, y1 - length, length - 10);
-		ofPopMatrix();
-	}
+		ofSetLineWidth(lineWidth);
+		ofSetColor(baseColor);
+
+		if (length > 10)
+		{
+			ofPushMatrix();
+				ofRotate(15 + (timeRepeated * mult));
+				ofDrawLine(0, 0, 0, -length);
+				ofTranslate(0, -length);
+				drawStick(x1, y1 - length, length - 10, lineWidth - 2, baseColor.lerp(ofColor(255), .04), mult + .3);
+			ofPopMatrix();
+
+
+			ofPushMatrix();
+			ofRotate(-15 + (timeRepeated * mult));
+				ofDrawLine(0, 0, 0, -length);
+				ofTranslate(0, -length);
+				drawStick(x1, y1 - length, length - 10, lineWidth - 2, baseColor.lerp(ofColor(255), .04), mult + .3);
+			ofPopMatrix();
+		}
+		else
+		{
+			ofSetColor(greenColor);
+			ofRectMode(OF_RECTMODE_CENTER);
+			ofDrawRectangle(0, 0, 10, 10);
+		}
+	ofPopStyle();
 }
 
 void ofApp::drawBackground()
 {
+	ofSetBackgroundColor(255);
+	ofSetColor(0, 200, 200);
+
 	ofPushMatrix();
 	ofTranslate(30, ofGetHeight());
 	for (int i = 0; i < 25; i++)
@@ -66,21 +86,32 @@ void ofApp::drawBackground()
 	}
 	ofPopMatrix();
 
-	//ofDrawRectangle(20, ofGetWidth(), 40, ofGetWidth() - 300);
+	ofSetColor(255, 255, 0);
+	ofDrawCircle(200, 150, 100);
 
 	sinNumber += .05;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofSetColor(125, 255, 125);
 	drawBackground();
 
 	ofPushMatrix();
 		ofTranslate(ofGetWidth() / 2, ofGetHeight());
 		ofSetColor(0);
-		drawStick(0, 0, 101);
+		drawStick(0, 0, 101, 20, ofColor(83, 53, 10), 1);
 	ofPopMatrix();
+
+	if (timeRepeated >= 2)
+	{
+		number = -.05;
+	}
+	else if (timeRepeated <= -2)
+	{
+		number = .05;
+	}
+
+	timeRepeated += number;
 }
 
 //--------------------------------------------------------------
