@@ -21,4 +21,11 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		int w;
+		int h;
+		int bs;
+		int dir;
+
+		//int dx[] = { 0, 0, 1, -1 };
+		int dy[] = { 1, -1, 0, 0 };
 };
