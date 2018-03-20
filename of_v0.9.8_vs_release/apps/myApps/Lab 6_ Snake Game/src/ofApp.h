@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "../Snake.h"
+#include "../Apple.h"
 
 class ofApp : public ofBaseApp{
 
@@ -26,6 +28,9 @@ class ofApp : public ofBaseApp{
 		int bs;
 		int dir;
 
-		//int dx[] = { 0, 0, 1, -1 };
-		int dy[] = { 1, -1, 0, 0 };
+		int dx[4] { 0, 0, 1, -1 };
+		int dy[4] { 1, -1, 0, 0 };
+
+		Apple apple;
+		Snake snake;
 };

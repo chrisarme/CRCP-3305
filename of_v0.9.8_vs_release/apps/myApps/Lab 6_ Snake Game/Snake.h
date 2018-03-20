@@ -1,8 +1,5 @@
 #pragma once
-
-#include "ofApp.h"
-#include <string>;
-#include <vector>;
+#include <ofMain.h>
 
 using std::string;
 using std::vector;
@@ -11,22 +8,14 @@ class Snake {
 	//You can use vector in C++ to substitute ArrayList in Java.
 	vector <int> x;
 	vector <int> y;
-	Snake() {
-		reLocate();
-	}
-	void reLocate() {
-		x.push_back(floor(rand() % w + 1));
-		y.push_back(floor(rand() % h + 1));
-	}
-	void display() {
-		ofSetColor(0, 255, 0);
-		for (int i = 0; i<x.size(); ++i)
-			rect(x.get(i)*bs, y.get(i)*bs, bs, bs);
-	}
-	void clean() {
-		x.clear();
-		y.clear();
-	}
+
+public:
+	Snake();
+	Snake(int width, int height);
+
+	void reLocate(int width, int height);
+	void display(int bs);
+	void clean();
 	/*bool eat(Apple apple) {//whether snake ate apple or nor
 		return x.get(0) == apple.x&&y.get(0) == apple.y;
 	}

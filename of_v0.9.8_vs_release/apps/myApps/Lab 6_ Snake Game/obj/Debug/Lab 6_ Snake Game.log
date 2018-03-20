@@ -1,0 +1,51 @@
+﻿  Apple.cpp
+  Snake.cpp
+  main.cpp
+src\main.cpp(11): error C2280: 'ofApp::ofApp(void)': attempting to reference a deleted function
+  c:\users\chris\documents\github\crcp-3305\of_v0.9.8_vs_release\apps\myapps\lab 6_ snake game\src\ofApp.h(36): note: compiler has generated 'ofApp::ofApp' here
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(967): error C2794: 'iterator_category': is not a member of any direct or indirect base class of 'std::iterator_traits<_InIt>'
+          with
+          [
+              _InIt=int
+          ] (compiling source file Apple.cpp)
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2787): note: see reference to function template instantiation 'void std::_Debug_range<_FwdIt>(_InIt,_InIt,std::_Dbfile_t,std::_Dbline_t)' being compiled
+          with
+          [
+              _FwdIt=int,
+              _InIt=int
+          ] (compiling source file Apple.cpp)
+  Apple.cpp(14): note: see reference to function template instantiation 'void std::fill<int,int>(_FwdIt,_FwdIt,const _Ty &)' being compiled
+          with
+          [
+              _FwdIt=int,
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(967): error C2938: '_Iter_cat_t<int>' : Failed to specialize alias template (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(967): error C2062: type 'unknown-type' unexpected (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2740): error C2794: 'value_type': is not a member of any direct or indirect base class of 'std::iterator_traits<_InIt>'
+          with
+          [
+              _InIt=int
+          ] (compiling source file Apple.cpp)
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2780): note: see reference to class template instantiation 'std::_Fill_memset_is_safe_helper<_FwdIt,_Ty>' being compiled
+          with
+          [
+              _FwdIt=int,
+              _Ty=int
+          ] (compiling source file Apple.cpp)
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2788): note: see reference to function template instantiation 'void std::_Fill_unchecked<_Iter,_Ty>(_FwdIt,_FwdIt,const _Ty &)' being compiled
+          with
+          [
+              _Iter=int,
+              _Ty=int,
+              _FwdIt=int
+          ] (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2740): error C2938: '_Iter_value_t<int>' : Failed to specialize alias template (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2740): error C2062: type 'unknown-type' unexpected (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2740): error C2238: unexpected token(s) preceding ';' (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2746): error C2065: '_Value_type': undeclared identifier (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2746): error C2923: 'std::_Is_character': '_Value_type' is not a valid template type argument for parameter '_Ty' (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2746): error C3203: '_Is_character': unspecialized class template can't be used as a template argument for template parameter '_Traits', expected a real type (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2749): error C2065: '_Value_type': undeclared identifier (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2749): error C2923: 'std::is_same': '_Value_type' is not a valid template type argument for parameter '_Ty2' (compiling source file Apple.cpp)
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\xutility(2749): error C3203: 'is_same': unspecialized class template can't be used as a template argument for template parameter '_Traits', expected a real type (compiling source file Apple.cpp)
