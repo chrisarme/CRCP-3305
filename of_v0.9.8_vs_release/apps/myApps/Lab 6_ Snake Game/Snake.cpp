@@ -29,3 +29,24 @@ void Snake::clean() {
 	x.clear();
 	y.clear();
 }
+
+void Snake::increaseBody(int dx[], int dy[], int dir) {
+	if (x.size() > 0)
+	{
+		x.insert(x.begin(), x.front() + dx[dir]);
+		y.insert(y.begin(), y.front() + dy[dir]);
+	}
+	else
+	{
+		x.push_back(x.front() + dx[dir]);
+		y.push_back(y.front() + dy[dir]);
+	}
+}
+void Snake::decreaseBody() {
+	x.pop_back();
+	y.pop_back();
+}
+void Snake::move(int dx[], int dy[], int dir) {
+	increaseBody(dx, dy, dir);
+	decreaseBody();
+}

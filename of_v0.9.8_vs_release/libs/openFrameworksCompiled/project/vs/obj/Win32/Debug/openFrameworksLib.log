@@ -1,5 +1,3 @@
-﻿  ofSerial.cpp
-  ofUtils.cpp
-  ofDirectShowPlayer.cpp
+﻿  ofDirectShowPlayer.cpp
   ofVideoPlayer.cpp
   openframeworksLib.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\of_v0.9.8_vs_release\libs\openFrameworksCompiled\project\vs\..\..\lib\vs\Win32\openframeworksLib_debug.lib

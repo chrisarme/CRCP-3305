@@ -10,9 +10,6 @@
     <ClCompile Include="Snake.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Apple.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -27,9 +24,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="GameController.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="Apple.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

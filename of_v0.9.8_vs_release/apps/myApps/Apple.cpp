@@ -1,6 +1,11 @@
 #pragma once
 #include "Apple.h"
 
+	Apple::Apple()
+	{
+		reLocate(30, 30);
+	}
+
 	Apple::Apple(int w, int h)
 	{
 		reLocate(w, h);

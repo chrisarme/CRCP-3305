@@ -26,20 +26,11 @@ public:
 		if (x.get(0)<0 || y.get(0)<0 || x.get(0) >= w || y.get(0) >= h)
 			return true;
 		return false;
-	}
-	void increaseBody() {
-		x.add(0, x.get(0) + dx[dir]);
-		y.add(0, y.get(0) + dy[dir]);
-	}
-	void decreaseBody() {
-		x.remove(x.size() - 1);
-		y.remove(y.size() - 1);
-	}
-	void move() {
-		increaseBody();
-		decreaseBody();
-	}
-	void keyControl() {
+	}*/
+	void increaseBody(int dx[], int dy[], int dir);
+	void decreaseBody();
+	void move(int dx[], int dy[], int dir);
+	/*void keyControl() {
 		int newdir = -1;
 		switch (key) {
 		case 's':
