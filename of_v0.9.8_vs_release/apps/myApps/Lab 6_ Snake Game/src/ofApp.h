@@ -1,7 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "../Snake.h"
-//#include "../Apple.h"
+#include "../Apple.h"
 
 class ofApp : public ofBaseApp
 {
@@ -27,11 +27,7 @@ class ofApp : public ofBaseApp
 		int w;
 		int h;
 		int bs;
-		int dir;
 
-		int dx[4] { 0, 0, 1, -1 };
-		int dy[4] { 1, -1, 0, 0 };
-
-		//Apple apple;
+		Apple apple;
 		Snake snake;
 };
