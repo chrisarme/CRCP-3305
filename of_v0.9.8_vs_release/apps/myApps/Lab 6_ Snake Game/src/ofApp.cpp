@@ -21,28 +21,60 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	
-	if (snake.dead(w, h))
+	switch (screen)
 	{
-		ofSetBackgroundColor(0);
-	}
-	else
-	{
+	case 0:
+		ofSetBackgroundColor(200, 100, 100);
+		break;
+
+	case 1:
+	case 2:
+		//if (snake.dead(w, h))
+		//{
+		//	ofSetBackgroundColor(0);
+		//}
+		//else
+		//{
+		//	ofSetBackgroundColor(255);
+		//}
 		ofSetBackgroundColor(255);
-	}
 		snake.display(bs);
 		apple.display(bs);
-		if (ofGetFrameNum() % 5 == 0) {//in openFrameworks 'frameCount' is ofGetFrameNum()
-			snake.move();
-			if (snake.eat(apple)) {
-				snake.increaseBody();
-				apple.reLocate(w, h);
+		if (ofGetFrameNum() % 5 == 0)
+		{
+			{
+				if (screen == 1)
+				{
+					snake.move();
+				}
+
+				if (snake.eat(apple))
+				{
+					snake.increaseBody();
+					apple.reLocate(w, h);
+				}
 			}
 		}
+		break;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	snake.keyControl(key);
+
+	if (key == 13 && screen == 0)
+	{
+		screen = 1;
+	}
+	else if (key == 32 && screen == 1)
+	{
+		screen = 2;
+	}
+	else if (key == 32 && screen == 2)
+	{
+		screen = 1;
+	}
 }
 
 //--------------------------------------------------------------

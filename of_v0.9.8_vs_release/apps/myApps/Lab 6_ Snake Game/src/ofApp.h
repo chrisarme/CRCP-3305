@@ -28,6 +28,8 @@ class ofApp : public ofBaseApp
 		int h;
 		int bs;
 
+		int screen = 0; // 0 = start, 1 = play, 2 = pause, 3 = game over
+
 		Apple apple;
 		Snake snake;
 };

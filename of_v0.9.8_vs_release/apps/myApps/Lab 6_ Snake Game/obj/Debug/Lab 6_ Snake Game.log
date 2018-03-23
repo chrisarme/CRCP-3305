@@ -1,5 +1,4 @@
-﻿  LINK : bin\Lab 6_ Snake Game_debug.exe not found or not built by the last incremental link; performing full link
-     Creating library bin\Lab 6_ Snake Game_debug.lib and object bin\Lab 6_ Snake Game_debug.exp
+﻿  ofApp.cpp
   Lab 6_ Snake Game.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\of_v0.9.8_vs_release\apps\myApps\Lab 6_ Snake Game\bin\Lab 6_ Snake Game_debug.exe
   Lab 6_ Snake Game.vcxproj -> bin\Lab 6_ Snake Game_debug.pdb (Full PDB)
   
