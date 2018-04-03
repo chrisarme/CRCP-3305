@@ -24,7 +24,8 @@ void ofApp::draw(){
 	switch (screen)
 	{
 	case 0:
-		ofSetBackgroundColor(200, 100, 100);
+		ofSetBackgroundColor(0, 168, 107);
+		
 		break;
 
 	case 1:
