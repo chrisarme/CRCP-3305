@@ -1,7 +1,10 @@
 #pragma once
 
-#include <ctime>
+#include "Player.h"
+#include "Enemy.h"
 
-int characterPosition[2];
 int maxScreenSize[2];
 bool quitProgram;
+
+Player player;
+Enemy enemy;

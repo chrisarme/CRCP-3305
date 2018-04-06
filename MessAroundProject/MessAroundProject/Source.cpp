@@ -29,19 +29,28 @@ void drawASCIIScreen(int xMax, int yMax)
 		for (int x = 0; x < xMax; x++)
 		{
 			cout << " ";
-			if (x == characterPosition[0] && y == characterPosition[1])
+			if (x == player.getPlayerXPosition() && y == player.getPlayerYPosition())
 			{
-				cout << "@";
+				cout << '@';
+			}
+			else if ((x == enemy.getEnemyXPosition() && y == enemy.getEnemyYPosition()))
+			{
+				cout << 'E';
 			}
 			else if (x == 0 || x == xMax - 1 || y == 0 || y == yMax - 1)
 			{
-				cout << "#";
+				cout << '#';
 			}
 			else
 			{
 				cout << " ";
 				//cout << (unsigned char)178;
 			}
+		}
+
+		if (y == 0)
+		{
+			cout << "   HP: " << player.getPlayerCurrentHealth() << '/' << player.getPlayerMaxHealth();
 		}
 
 		cout << endl;
@@ -52,8 +61,9 @@ void setup()
 {
 	ShowConsoleCursor(false);
 
-	characterPosition[0] = 4;
-	characterPosition[1] = 4;
+	player = Player();
+	enemy = Enemy();
+
 	maxScreenSize[0] = 31;
 	maxScreenSize[1] = 21;
 	
@@ -68,23 +78,9 @@ int main()
 		drawASCIIScreen(maxScreenSize[0], maxScreenSize[1]);
 		_getch();
 
-		if ((GetAsyncKeyState('A') & 0x8000) && (characterPosition[0] > 0))
-		{
-			characterPosition[0] -= 1;
-		}
-		else if ((GetAsyncKeyState('D') & 0x8000) && (characterPosition[0] < maxScreenSize[0] - 1))
-		{
-			characterPosition[0] += 1;
-		}
+		player.playerControls();
+		enemy.enemyControls();
 
-		if ((GetAsyncKeyState('W') & 0x8000) && (characterPosition[1] > 0))
-		{
-			characterPosition[1] -= 1;
-		}
-		else if ((GetAsyncKeyState('S') & 0x8000) && (characterPosition[1] < maxScreenSize[1] - 1))
-		{
-			characterPosition[1] += 1;
-		}
 		system("cls");
 	}
 }
