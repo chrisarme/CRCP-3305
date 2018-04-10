@@ -16,4 +16,5 @@ public:
 	void update();
 	void draw();
 	void setY(int yPos);
+	int getAlpha();
 };

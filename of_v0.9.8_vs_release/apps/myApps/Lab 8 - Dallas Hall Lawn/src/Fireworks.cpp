@@ -75,10 +75,21 @@ void Fireworks::displayParticles()
 	}
 }
 
-
 void Fireworks::display()
 {
     ofSetColor(255, 255, 0);
     ofSetCircleResolution(3);
     ofDrawCircle(x, y, size);
+}
+
+bool Fireworks::areParticlesVisible() 
+{
+	if (particlePtrs[0]->getAlpha() <= 0)
+	{
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
 }

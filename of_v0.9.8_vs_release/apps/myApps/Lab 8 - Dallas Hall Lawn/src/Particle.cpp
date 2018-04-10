@@ -48,3 +48,8 @@ void Particle::setY(int yPos)
 {
 	y = yPos;
 }
+
+int Particle::getAlpha()
+{
+	return alpha;
+}

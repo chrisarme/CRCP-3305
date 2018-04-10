@@ -13,6 +13,9 @@
     <ClCompile Include="src\Fireworks.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Raindrop.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -27,6 +30,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Fireworks.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Raindrop.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

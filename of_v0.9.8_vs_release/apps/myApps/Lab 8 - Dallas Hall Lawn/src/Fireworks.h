@@ -28,6 +28,7 @@ public:
     void move();
     void setup();
     void displayParticles();
+	bool areParticlesVisible();
     
     Fireworks();
     Fireworks(float x, float y, float xVelocity, float yVelocity, float xAcceleration, float yAcceleration);//overloaded constructor
