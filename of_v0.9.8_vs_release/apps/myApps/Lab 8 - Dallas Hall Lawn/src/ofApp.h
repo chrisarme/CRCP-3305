@@ -4,15 +4,11 @@
 #include "Particle.h"
 #include "Fireworks.h"
 #include "Raindrop.h"
+#include "../DallasHall.h"
 #include <vector>//ArrayList library class in C++
 using std::vector;
 class ofApp : public ofBaseApp//super class
 {
-	int fireworkAmount = 10;
-	int raindropAmount = 10;
-	int explosionHeight = 200;
-	vector<Fireworks*> fireworksPtrs;//create static allocation array (normal array) of pointers
-	vector<Raindrop*> raindropsPtrs;
 public:
 	~ofApp();//destructor
 	void setup();
@@ -30,4 +26,12 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
+
+	int fireworkAmount = 10;
+	int raindropAmount = 3;
+	int explosionHeight = 200;
+	vector<Fireworks*> fireworksPtrs;//create static allocation array (normal array) of pointers
+	vector<Raindrop*> raindropsPtrs;
+
+	DallasHall dallasHall;
 };

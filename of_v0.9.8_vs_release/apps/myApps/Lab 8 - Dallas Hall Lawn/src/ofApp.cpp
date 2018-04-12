@@ -17,7 +17,7 @@ ofApp::~ofApp()//destructor
 void ofApp::setup()
 {
 	ofSetFrameRate(60);
-	ofBackground(0);
+	ofBackground(24, 15, 42);
 
 	for (int i = 0; i != fireworkAmount; i++)
 	{
@@ -26,7 +26,7 @@ void ofApp::setup()
 
 	for (int i = 0; i != raindropAmount; i++)
 	{
-		raindropsPtrs.push_back(new Raindrop(ofGetWidth() / 2, ofGetHeight() - 175, 3));
+		raindropsPtrs.push_back(new Raindrop(ofGetWidth() / 2, ofGetHeight() - 175, 3, ofRandom(-10, -5), ofRandom(-2, 2)));
 	}
 
 	for (int i = 0; i != fireworkAmount; i++)
@@ -43,6 +43,15 @@ void ofApp::update()
 		fireworkAmount += 1;
 		fireworksPtrs.push_back(new Fireworks(ofRandom(50, ofGetWidth() - 50), ofRandom(ofGetHeight() - 180, ofGetHeight()), ofRandom(-10, 10), ofRandom(-10, 10), ofRandom(-5, 5), ofRandom(-5, 5)));
 		fireworksPtrs[fireworksPtrs.size() - 1]->setup();
+	}
+
+	if (ofGetFrameNum() % 10 == 0)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			raindropAmount += 1;
+			raindropsPtrs.push_back(new Raindrop(ofGetWidth() / 2, ofGetHeight() - 175, 3, ofRandom(-10, -5), ofRandom(-2, 2)));
+		}
 	}
 
 	for (int i = 0; i != fireworkAmount; i++)
@@ -72,6 +81,17 @@ void ofApp::update()
 	{
 		raindropsPtrs[i]->update();
 	}
+
+	for (int i = raindropAmount; i != 0; i--)
+	{
+		if (!raindropsPtrs[i - 1]->checkExistence())
+		{
+			delete raindropsPtrs[i - 1]; //avoid memory leak
+			raindropsPtrs[i - 1] = nullptr; //avoid dangling pointer
+			raindropsPtrs.erase(raindropsPtrs.begin() + i - 1);
+			raindropAmount--;
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -90,16 +110,7 @@ void ofApp::draw()
 		}
 
 		// Draw Dallas Hall
-		ofSetColor(80, 10, 0);
-		ofDrawRectangle(150, ofGetHeight() - 400, ofGetWidth() - 300, 200);
-		ofSetCircleResolution(50);
-		ofDrawCircle(ofGetWidth() / 2, ofGetHeight() - 375, 150);
-
-		ofSetColor(0, 92, 9);
-		ofDrawRectangle(0, ofGetHeight() - 200, ofGetWidth(), 200);
-
-		ofSetColor(255);
-		ofDrawRectangle(200, ofGetHeight() - 175, ofGetWidth() - 400, 25);
+		dallasHall.draw();
 
 		for (int i = 0; i != raindropAmount; i++)
 		{
@@ -107,10 +118,17 @@ void ofApp::draw()
 		}
 
 		// THIS IS JUST TO MAKE SURE THAT MEMORY IS BEING CORRECTLY ALLOCATED
-		//for (int i = 0; i != fireworksPtrs.size(); i++)
+		//for (int i = 0; i != raindropsPtrs.size(); i++)
 		//{
 		//	ofSetColor(255);
-		//	ofDrawRectangle((20 * i) + 50, 50, 10, 10);
+		//	if (20 * i < ofGetWidth() - 20)
+		//	{
+		//		ofDrawRectangle((20 * i) + 50, 50, 10, 10);
+		//	}
+		//	else
+		//	{
+		//		ofDrawRectangle((20 * i) - ofGetWidth() + 50, 70, 10, 10);
+		//	}
 		//}
 }
 

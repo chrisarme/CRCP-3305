@@ -8,12 +8,13 @@ private:
 	double x;
 	double y;
 	double size;
-	double velocity{};
+	double yVelocity{};
+	double xVelocity{};
 	double gravity{ .2 };
 
 public:
 	Raindrop() = default;
-	Raindrop(float x, float y, float size);
+	Raindrop(float x, float y, float size, double yVel, double xVel);
 	void update();
 	void draw();
 	bool checkExistence();

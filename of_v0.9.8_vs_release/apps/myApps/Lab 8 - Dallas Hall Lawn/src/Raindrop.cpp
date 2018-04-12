@@ -1,15 +1,17 @@
 #include "Raindrop.h"
 
-Raindrop::Raindrop(float x, float y, float size)
+Raindrop::Raindrop(float x, float y, float size, double yVel, double xVel)
 {
 	this->x = x;
 	this->y = y;
 	this->size = size;
+	this->yVelocity = yVel;
+	this->xVelocity = xVel;
 }
 
 bool Raindrop::checkExistence()
 {
-	if (y > ofGetHeight())
+	if (y < ofGetHeight() - 174)
 	{
 		return true;
 	}
@@ -21,8 +23,9 @@ bool Raindrop::checkExistence()
 
 void Raindrop::update()
 {
-	y += velocity;
-	velocity += gravity;
+	x += xVelocity;
+	y += yVelocity;
+	yVelocity += gravity;
 
 	// reset/delete and recreate
 	/*if (y > ofGetHeight())
