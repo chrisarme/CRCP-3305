@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Triangle.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,11 +22,17 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+		void mouseScrolled(int x, int y, float scrollX, float scrollY);
+
 		ofEasyCam cam;
 		ofBoxPrimitive box;
 		ofSpherePrimitive sphere;
 		of3dPrimitive trianglePrimitive;
 		ofMesh triangleMesh;
-		vector <of3dPrimitive> triangles;
+		vector <Triangle> triangles;
+		Triangle tempTriangle;
+		double sphereRot = 0;
+
+		vector<ofPoint> vertices;
 		
 };
