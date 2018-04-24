@@ -4,15 +4,14 @@
 class Triangle
 {
 private:
-	double sRotation;
-	double tRotation;
+	double rotation;
 	double size;
+	ofPoint centerOfTriangle;
+	ofPoint vectors[3];
 	ofColor color;
-	of3dPrimitive triangleShape;
-	ofMesh triangleMesh;
 
 public:
 	Triangle();
-	Triangle(double rotation, double tRotation, double size, ofColor color);
+	Triangle(double size, ofColor color, double rotation, double radius);
 	void draw();
 };

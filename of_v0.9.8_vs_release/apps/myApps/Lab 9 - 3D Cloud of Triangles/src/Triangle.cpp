@@ -2,37 +2,47 @@
 
 Triangle::Triangle()
 {
-	sRotation = ofRandom(0, 360);
 	size = ofRandom(1, 5);
 	color = ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0, 255));
 
-	triangleMesh.addVertex(ofPoint(-2, -2, 0));
-	triangleMesh.addVertex(ofPoint(2, -2, 0));
-	triangleMesh.addVertex(ofPoint(0, 2, 0));
+	centerOfTriangle = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1), ofRandom(-1, 1));
+	centerOfTriangle.normalize();
+	centerOfTriangle = centerOfTriangle * 20;
 
-	triangleShape = of3dPrimitive(triangleMesh);
+	vectors[0] = centerOfTriangle + (ofPoint(-10, -10, 0) * size);
+	vectors[1] = centerOfTriangle + (ofPoint(0, 10, 0) * size);
+	vectors[2] = centerOfTriangle + (ofPoint(10, -10, 0) * size);
 }
 
-Triangle::Triangle(double sRotation, double tRotation, double size, ofColor color)
+Triangle::Triangle(double size, ofColor color, double rotation, double radius)
 {
-	this->sRotation = sRotation;
-	this->tRotation = tRotation;
 	this->size = size;
 	this->color = color;
+	this->rotation = rotation;
+	
+	centerOfTriangle = ofPoint(ofRandom(-1, 1), ofRandom(-1, 1), ofRandom(-1, 1));
+	centerOfTriangle.normalize();
+	centerOfTriangle = centerOfTriangle * radius;
 
-	triangleMesh.addVertex(ofPoint(-2, -2, 0));
-	triangleMesh.addVertex(ofPoint(2, -2, 0));
-	triangleMesh.addVertex(ofPoint(0, 2, 0));
-
-	triangleShape = of3dPrimitive(triangleMesh);
+	vectors[0] = centerOfTriangle + (ofPoint(-10, -10, 0) * size);
+	vectors[1] = centerOfTriangle + (ofPoint(0, 10, 0) * size);
+	vectors[2] = centerOfTriangle + (ofPoint(10, -10, 0) * size);
 }
 
 void Triangle::draw()
 {
-	ofSetColor(color);
 
-	triangleShape.setPosition(20 * cos(ofDegToRad(sRotation)) * sin(ofDegToRad(tRotation)), 20 * sin(ofDegToRad(sRotation)) * sin(ofDegToRad(tRotation)), 20 * cos(ofDegToRad(tRotation)));
-	triangleShape.setOrientation(ofQuaternion(0, ofVec3f(1, 0, 0), sRotation, ofVec3f(0, 1, 0), tRotation, ofVec3f(0, 0, 1)));
-	triangleShape.setScale(ofVec3f(size, size, size));
-	triangleShape.draw();
+	ofPushMatrix();
+
+		ofSetColor(color);
+
+		float time = ofGetElapsedTimef();
+		float angle = time * 10;
+		ofRotate(angle, 0, 1, 0);
+
+		ofRotate(rotation, 1, 1, 1);
+
+		ofDrawTriangle(vectors[0], vectors[1], vectors[2]);
+
+	ofPopMatrix();
 }

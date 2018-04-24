@@ -25,14 +25,6 @@ class ofApp : public ofBaseApp{
 		void mouseScrolled(int x, int y, float scrollX, float scrollY);
 
 		ofEasyCam cam;
-		ofBoxPrimitive box;
-		ofSpherePrimitive sphere;
-		of3dPrimitive trianglePrimitive;
-		ofMesh triangleMesh;
 		vector <Triangle> triangles;
-		Triangle tempTriangle;
-		double sphereRot = 0;
-
-		vector<ofPoint> vertices;
-		
+		double sphereRadius;
 };
