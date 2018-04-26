@@ -21,7 +21,9 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		of3dPrimitive *primativeObjects[4];
+		of3dPrimitive **primativeObjects = new of3dPrimitive*[4];
 		ofImage image1;
+		ofTexture texture1;
+		ofCamera cam;
 		
 };
