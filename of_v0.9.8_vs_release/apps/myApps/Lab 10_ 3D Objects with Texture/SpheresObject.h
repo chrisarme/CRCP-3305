@@ -12,6 +12,10 @@ private:
 	double radius;
 	double sinNumber;
 	ofSpherePrimitive spheres[2];
+	ofTexture waterTexture;
+	ofTexture lavaTexture;
+	double xRotation;
+	double yRotation;
 
 public:
 	SpheresObject()=default;
@@ -19,4 +23,5 @@ public:
 	void setup();
 	void draw();
 	void update();
+	void rotate();
 };

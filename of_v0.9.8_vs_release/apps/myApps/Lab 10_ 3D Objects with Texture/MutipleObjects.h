@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseObject.h"
 #include "ofMain.h"
+#include <ctime>
 
-class RocketObject : public BaseObject
+
+class MultipleObjects : public BaseObject
 {
 private:
 	double xPos;
@@ -11,12 +13,18 @@ private:
 	ofColor color;
 	double radius;
 	double cubeSize;
+	int objectToDraw = 0;
 	ofBoxPrimitive box;
 	ofSpherePrimitive sphere;
+	ofTexture texture;
+
+	clock_t start;
 
 public:
-	RocketObject() = default;
-	RocketObject(double x, double y, double z, double radius, int height, ofColor color);
+	MultipleObjects() = default;
+	MultipleObjects(double x, double y, double z, double radius, double cubeSize, ofColor color);
 	void setup();
+	void update();
 	void draw();
+	void rotate();
 };

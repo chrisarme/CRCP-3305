@@ -6,62 +6,65 @@ void ofApp::setup()
 	ofSetDepthTest(true);
 	ofDisableArbTex();
 	ofSetFrameRate(60);
-	//ofSetSphereResolution(20);
 
-	//cam.setDistance(100);
-	cam.setGlobalPosition(0, 0, 100);
-
-	//glEnable(texture1);
-
-	/*for (int i = 0; i < 4; i++)
-	{
-		primativeObjects[i]
-	}*/
-
-	//image1.load("Image 1.jpg");
-	//texture1 = image1.getTexture();
-
-	
-
-	ofLoadImage(texture1, "Image1test.jpg");
-
-	primativeObjects[0] = new ofSpherePrimitive(10, 20);
-	primativeObjects[1] = new ofBoxPrimitive(20, 20, 20);
-	primativeObjects[2] = new ofCylinderPrimitive(10, 20, 10, 2);
-	primativeObjects[3] = new ofConePrimitive(15, 20, 10, 10);
+	cam.setGlobalPosition(2, 0, 60);
 
 	// x, y, z, h, w, d, color
 	cube = CubicObject(15, 15, 0, 15, 15, 15, ofColor(255, 0, 0));
 	rocket = RocketObject(-15, 15, 0, (15 / 2), 15, ofColor(ofColor(0, 255, 0)));
 	spheres = SpheresObject(15, -15, 0, 4, ofColor(0, 0, 255));
+	multipleObjects = MultipleObjects(-15, -15, 0, 7.5, 15, ofColor(255));
 
-	cube.setup();
-	rocket.setup();
-	spheres.setup();
+	objects[0][0] = &cube;
+	objects[0][1] = &rocket;
+	objects[1][0] = &spheres;
+	objects[1][1] = &multipleObjects;
 
-	//delete[] primativeObjects;
-	//primativeObjects = nullptr;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			objects[i][j]->setup();
+		}
+	}
 
-	//primativeObjects[0]->mapTexCoordsFromTexture(image1.getTexture());
-
-	//image1.getTexture().bind();
-
-	//primativeObjects[0]->
-
-	
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	ofVec3f test = cam.worldToScreen(primativeObjects[0]->getPosition());
-	ofVec2f mouse = ofVec2f(ofGetMouseX(), ofGetMouseY());
-	if (test.distance(mouse) <= 100)
+
+	if (ofGetMouseX() <= (ofGetWidth() / 2) && ofGetMouseY() >= (ofGetHeight() / 2))
 	{
-		primativeObjects[1]->rotate(.25, 0, 1, 0);
+		objects[1][1]->rotate();
+	}
+	else if (ofGetMouseX() >= (ofGetWidth() / 2) && ofGetMouseY() <= (ofGetHeight() / 2))
+	{
+		objects[0][0]->rotate();
+	}
+	else if (ofGetMouseX() >= (ofGetWidth() / 2) && ofGetMouseY() >= (ofGetHeight() / 2))
+	{
+		objects[1][0]->rotate();
+	}
+	else if (ofGetMouseX() <= (ofGetWidth() / 2) && ofGetMouseY() <= (ofGetHeight() / 2))
+	{
+		objects[0][1]->rotate();
 	}
 
-	spheres.update();
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			objects[i][j]->update();
+		}
+	}
+
+	if (sinNumber >= TWO_PI)
+	{
+		sinNumber = 0;
+	}
+
+	sinNumber += PI / 400;
 }
 
 //--------------------------------------------------------------
@@ -69,36 +72,18 @@ void ofApp::draw(){
 
 	cam.begin();
 
-	cube.draw();
-	rocket.draw();
-	spheres.draw();
-
-	/*ofPushMatrix();
-		texture1.bind();
-		ofSetColor(255);
-		ofTranslate(15, -15, 0);
-		primativeObjects[0]->draw();
-		texture1.unbind();
+	ofPushMatrix();
+	ofTranslate(-ofGetWidth() / 2, -ofGetHeight() / 2, -600);
+	ofBackgroundGradient(ofColor(150 - abs((sin(sinNumber)) * 50)), ofColor(abs(sin(sinNumber)) * 80, 0, 0));
 	ofPopMatrix();
 
-	ofPushMatrix();
-	ofSetColor(255);
-	ofTranslate(15, 15, 0);
-	primativeObjects[1]->draw();
-	ofPopMatrix();
-
-	ofPushMatrix();
-	ofSetColor(0, 200, 0);
-	ofTranslate(-15, -15, 0);
-	primativeObjects[2]->draw();
-	ofPopMatrix();
-
-	ofPushMatrix();
-	ofSetColor(0, 0, 200);
-	ofTranslate(-15, 15, 0);
-	primativeObjects[3]->draw();
-	ofPopMatrix();*/
-
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			objects[i][j]->draw();
+		}
+	}
 
 	cam.end();
 }
