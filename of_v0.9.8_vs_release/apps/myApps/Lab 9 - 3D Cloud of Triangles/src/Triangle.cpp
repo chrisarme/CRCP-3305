@@ -36,6 +36,8 @@ void Triangle::draw()
 
 		ofSetColor(color);
 
+		ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2, 0);
+
 		float time = ofGetElapsedTimef();
 		float angle = time * 10;
 		ofRotate(angle, 0, 1, 0);

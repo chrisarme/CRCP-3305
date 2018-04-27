@@ -8,6 +8,7 @@ void ofApp::setup()
 	ofSetVerticalSync(true);
 
 	cam.setDistance(400);
+	cam.setPosition(ofGetWidth() / 2, ofGetHeight() / 2, 0);
 
 	sphereRadius = 140;
 
@@ -26,7 +27,13 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+	
 	cam.begin();
+
+	ofPushMatrix();
+	ofTranslate(0, 0, -200);
+	ofBackgroundGradient(ofColor(255), ofColor(0));
+	ofPopMatrix();
 
 	ofFill();
 
@@ -114,13 +121,14 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 //???
 void ofApp::mouseScrolled(int x, int y, float scrollX, float scrollY)
 {
+	//ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2, 0);
 	if (scrollY < 0)
 	{
-		cam.setDistance(cam.getDistance() - 10);
+		cam.setPosition(cam.getPosition() - ofVec3f(0, 0, 10));
 	}
 	else if (scrollY > 0)
 	{
-		cam.setDistance(cam.getDistance() + 10);
+		cam.setPosition(cam.getPosition() + ofVec3f(0, 0, 10));
 	}
 
 	//mouseScrolled(x, y, scrollX, scrollY);
