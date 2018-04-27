@@ -171,10 +171,19 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CubicObject.cpp" />
+    <ClCompile Include="MutipleObject.cpp" />
+    <ClCompile Include="RocketObject.cpp" />
+    <ClCompile Include="SpheresObject.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="CubicObject.h" />
+    <ClInclude Include="MutipleObjects.h" />
+    <ClInclude Include="RocketObject.h" />
+    <ClInclude Include="SpheresObject.h" />
     <ClInclude Include="src\ofApp.h" />
   </ItemGroup>
   <ItemGroup>

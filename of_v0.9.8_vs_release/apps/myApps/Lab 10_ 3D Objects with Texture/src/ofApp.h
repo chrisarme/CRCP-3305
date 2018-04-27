@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "../CubicObject.h"
+#include "../RocketObject.h"
+#include "../SpheresObject.h"
 
 class ofApp : public ofBaseApp{
 
@@ -24,6 +27,8 @@ class ofApp : public ofBaseApp{
 		of3dPrimitive **primativeObjects = new of3dPrimitive*[4];
 		ofImage image1;
 		ofTexture texture1;
-		ofCamera cam;
-		
+		ofEasyCam cam;
+		CubicObject cube;
+		RocketObject rocket;
+		SpheresObject spheres;
 };
