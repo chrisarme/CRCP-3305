@@ -15,14 +15,34 @@ void SpheresObject::setup()
 	spheres[0] = ofSpherePrimitive(radius, 20);
 	spheres[1] = ofSpherePrimitive(radius, 20);
 
-	spheres[0].setPosition(xPos + (sin(sinNumber) * 5), yPos, zPos);
-	spheres[1].setPosition(xPos - (sin(sinNumber) * 5), yPos, zPos);
+	spheres[0].setPosition((sin(sinNumber) * 5), 0, 0);
+	spheres[1].setPosition(-(sin(sinNumber) * 5), 0, 0);
+	spheres[1].rotate(180, 0, 1, 0);
+
+	xRotation = 0;
+	yRotation = 0;
+
+	ofLoadImage(waterTexture, "WaterTexture.jpg");
+	ofLoadImage(lavaTexture, "LavaTexture.jpg");
 }
 
 void SpheresObject::draw()
 {
-	spheres[0].draw();
-	spheres[1].draw();
+	ofPushMatrix();
+
+	ofTranslate(xPos, yPos, zPos);
+	ofRotateX(xRotation);
+	ofRotateY(yRotation);
+
+	waterTexture.bind();
+		spheres[0].draw();
+	waterTexture.unbind();
+
+	lavaTexture.bind();
+		spheres[1].draw();
+	lavaTexture.unbind();
+
+	ofPopMatrix();
 }
 
 void SpheresObject::update()
@@ -31,10 +51,15 @@ void SpheresObject::update()
 	{
 		sinNumber = 0;
 	}
-	//if (ofGetMouseX() <= ofGetWidth() /2 && ofGetMouseY() <= ofGetHeight / 2)
 
-	sinNumber += .1;
+	sinNumber += .05;
 
-	spheres[0].setPosition(xPos + (sin(sinNumber) * 5), yPos, zPos);
-	spheres[1].setPosition(xPos - (sin(sinNumber) * 5), yPos, zPos);
+	spheres[0].setPosition((sin(sinNumber) * 5), 0, 0);
+	spheres[1].setPosition(-(sin(sinNumber) * 5), 0, 0);
+}
+
+void SpheresObject::rotate()
+{
+	xRotation -= 1;
+	yRotation += 1;
 }

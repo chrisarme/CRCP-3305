@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+<<<<<<< HEAD
 Debug|Win32|C:\Users\chris\Documents\GitHub\CRCP-3305\of_v0.9.8_vs_release\apps\myApps\Lab 11 - Ring\|
+=======
+Debug|Win32|C:\Users\chris\Documents\GitHub\CRCP-3305\of_v0.9.8_vs_release\apps\myApps\Lab 10_ 3D Objects with Texture\|
+>>>>>>> a5975fdda7d62ad11363da24ea0e4480d2fcf2a9

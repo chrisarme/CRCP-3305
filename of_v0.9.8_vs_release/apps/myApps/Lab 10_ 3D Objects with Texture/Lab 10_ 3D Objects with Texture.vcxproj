@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="bin\data\Image1test.jpg" />
+    <Image Include="bin\data\purpleTexture.jpg" />
     <Image Include="src\Image1.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

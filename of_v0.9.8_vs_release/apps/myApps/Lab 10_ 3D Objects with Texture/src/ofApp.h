@@ -1,9 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
+#include "../BaseObject.h"
 #include "../CubicObject.h"
 #include "../RocketObject.h"
 #include "../SpheresObject.h"
+#include "../MutipleObjects.h"
 
 class ofApp : public ofBaseApp{
 
@@ -24,11 +26,13 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		of3dPrimitive **primativeObjects = new of3dPrimitive*[4];
+		double sinNumber = 0;
 		ofImage image1;
 		ofTexture texture1;
-		ofEasyCam cam;
+		ofCamera cam;
+		BaseObject* objects[2][2];
 		CubicObject cube;
 		RocketObject rocket;
 		SpheresObject spheres;
+		MultipleObjects multipleObjects;
 };

@@ -55,5 +55,8 @@
     <Image Include="bin\data\Image1test.jpg">
       <Filter>src</Filter>
     </Image>
+    <Image Include="bin\data\purpleTexture.jpg">
+      <Filter>src</Filter>
+    </Image>
   </ItemGroup>
 </Project>
