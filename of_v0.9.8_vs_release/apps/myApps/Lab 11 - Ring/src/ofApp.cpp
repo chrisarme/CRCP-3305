@@ -4,9 +4,10 @@
 void ofApp::setup()
 {
 	ofSetFrameRate(60);
-	cam.setPosition(ofGetWidth() / 2, ofGetHeight() / 2, 100);
+	ofEnableDepthTest();
+	cam.setPosition(ofGetWidth() / 2, ofGetHeight() / 2, 600);
 
-	int pointMax = 60;
+	int pointMax = 100;
 
 	ringPoints.push_back(vector<ofPoint>());
 
@@ -42,10 +43,17 @@ void ofApp::setup()
 	{
 		for (int i = 0; i < pointMax - 2; i++)
 		{
-			ringMesh.addVertex(ringPoints[a][i]); ringMesh.addVertex(ringPoints[a][i + 1]); ringMesh.addVertex(ringPoints[a][i + 2]);
+			if (i % 2 == 0)
+			{
+				ringMesh.addVertex(ringPoints[a][i + 1]); ringMesh.addVertex(ringPoints[a][i]); ringMesh.addVertex(ringPoints[a][i + 2]);
+			}
+			else
+			{
+				ringMesh.addVertex(ringPoints[a][i]); ringMesh.addVertex(ringPoints[a][i + 1]); ringMesh.addVertex(ringPoints[a][i + 2]);
+			}
 		}
 
-		ringMesh.addVertex(ringPoints[a][pointMax - 2]); ringMesh.addVertex(ringPoints[a][pointMax - 1]); ringMesh.addVertex(ringPoints[a][0]);
+		ringMesh.addVertex(ringPoints[a][pointMax - 1]); ringMesh.addVertex(ringPoints[a][pointMax - 2]); ringMesh.addVertex(ringPoints[a][0]);
 		ringMesh.addVertex(ringPoints[a][pointMax - 1]); ringMesh.addVertex(ringPoints[a][0]); ringMesh.addVertex(ringPoints[a][1]);
 	}
 
@@ -81,9 +89,6 @@ void ofApp::setup()
 	//ringMesh.addTexCoord(ofPoint(100, 100));    //v0
 	//ringMesh.addTexCoord(ofPoint(10, 300));		//v1
 	//ringMesh.addTexCoord(ofPoint(10, 10));		//v2
-
-
-	ofEnableDepthTest();//enable z-buffering
 }
 
 void ofApp::setNormals()//general normal calculation
@@ -123,23 +128,35 @@ void ofApp::setNormals()//general normal calculation
 //--------------------------------------------------------------
 void ofApp::update(){
 	angle += 1;
+
+	if (colorNumber >= 255)
+	{
+		colorNumber = 0;
+	}
+
+	colorNumber += .25;
+
+	rainbow = ofColor().fromHsb(colorNumber, 255, 255);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
 	cam.begin();
-
-	//ofBackgroundGradient(ofColor{ 0 }, ofColor{ 255 });
-	//image.bind();
-	//ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
+	ofPushMatrix();
+	ofTranslate(0, 0, -50);
+	ofBackgroundGradient(ofColor{ 255 }, ofColor{ 0 });
+	ofPopMatrix();
+	
+	ofPushMatrix();
+	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
 	ofRotate(angle, 1, .5, .6);
-	ofSetColor(250, 0, 200);
+	ofSetColor(rainbow);
 	ringMesh.draw();
 	//ringMesh.drawFaces();
 	//ringMesh.drawWireframe();
 	//ringMesh.drawVertices();
-	//image.unbind();
+	ofPopMatrix();
 
 	cam.end();
 }

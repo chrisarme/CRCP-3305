@@ -21,11 +21,13 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		void setNormals();
+
 		vector< vector<ofPoint> > ringPoints;
 		ofMesh ringMesh;
-		void setNormals();
 		ofLight light;
-		ofEasyCam cam;
+		ofCamera cam;
+		ofColor rainbow;
 		int angle = 0;
-
+		double colorNumber = 0;
 };
