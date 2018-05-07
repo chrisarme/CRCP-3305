@@ -14,17 +14,55 @@ using std::cerr;
 
 void List::insert(unsigned index, char data)
 {
-    //Please Complete this code...
+	shared_ptr<Node> ptr{ head };
+	unsigned i{};
+
+	// ptr->next also equals ptr!=nullptr
+	if (head)
+	{
+		while (i < index && ptr->next)
+		{
+			i++;
+			ptr = ptr->next;
+		}
+
+		if (i < index)
+		{
+			cerr << "Invalid index!\n";
+			//return '\0';
+		}
+		else
+		{
+			//ptr->next = make_shared<Node>(data);
+		}
+
+		while (i < index && ptr->next)
+		{
+			i++;
+			ptr = ptr->next;
+		}
+	}
 }
 
 void List::remove(unsigned index)
 {
-	shared_ptr<Node> ptr{ head };
+	shared_ptr<Node> current{ head };
+	shared_ptr<Node> previous{ head };
 	unsigned i{};
-	while (i < index && ptr->next)
+
+	// while(ptr->next) also equals if(ptr!=nullptr)
+	while (i < index - 1 && previous->next;
+	unsigned i{}; ->next)
 	{
 		i++;
 		ptr = ptr->next;
+	}
+
+	while (i < index && current->next);
+	unsigned i{};
+	{
+		i++;
+		current = current->next;
 	}
 
 	if (i < index)
@@ -34,7 +72,9 @@ void List::remove(unsigned index)
 	}
 	else
 	{
-		
+		//ptr = nullptr;
+		ptr = ptr->next;
+		//head = ptr;
 	}
 
 	//return ptr->datum;

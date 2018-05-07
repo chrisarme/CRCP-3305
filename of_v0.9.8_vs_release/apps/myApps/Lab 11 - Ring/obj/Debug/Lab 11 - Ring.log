@@ -1,5 +1,5 @@
-﻿  LINK : bin\Lab 11 - Ring_debug.exe not found or not built by the last incremental link; performing full link
-     Creating library bin\Lab 11 - Ring_debug.lib and object bin\Lab 11 - Ring_debug.exp
+﻿  main.cpp
+  ofApp.cpp
   Lab 11 - Ring.vcxproj -> C:\Users\chris\Documents\GitHub\CRCP-3305\of_v0.9.8_vs_release\apps\myApps\Lab 11 - Ring\bin\Lab 11 - Ring_debug.exe
   Lab 11 - Ring.vcxproj -> bin\Lab 11 - Ring_debug.pdb (Full PDB)
   
