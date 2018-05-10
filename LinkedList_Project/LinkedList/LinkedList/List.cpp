@@ -14,33 +14,37 @@ using std::cerr;
 
 void List::insert(unsigned index, char data)
 {
-	shared_ptr<Node> ptr{ head };
-	unsigned i{};
+	shared_ptr<Node> current{ head };
+	shared_ptr<Node> previous{ head };
+	shared_ptr<Node> temp{ };
 
-	// ptr->next also equals ptr!=nullptr
-	if (head)
+	int i = 0;
+
+	// while(ptr->next) also equals if(ptr!=nullptr)
+	while (i < index && current->next && index != 0)
 	{
-		while (i < index && ptr->next)
-		{
-			i++;
-			ptr = ptr->next;
-		}
+		i++;
+		previous = current;
+		current = current->next;
+	}
 
-		if (i < index)
-		{
-			cerr << "Invalid index!\n";
-			//return '\0';
-		}
-		else
-		{
-			//ptr->next = make_shared<Node>(data);
-		}
+	if (i > index)
+	{
+		cerr << "Invalid index!\n";
+	}
+	else if (index == 0)
+	{
+		temp = make_shared<Node>(data);
+		temp->next = previous;
+		head = temp;
+	}
+	else
+	{
+		temp = make_shared<Node>(data);
+		previous->next = temp;
+		temp->next = current;
 
-		while (i < index && ptr->next)
-		{
-			i++;
-			ptr = ptr->next;
-		}
+		// Don't need to directly do head = something because we are using pointers!
 	}
 }
 
@@ -48,36 +52,32 @@ void List::remove(unsigned index)
 {
 	shared_ptr<Node> current{ head };
 	shared_ptr<Node> previous{ head };
-	unsigned i{};
+
+	int i = 0;
 
 	// while(ptr->next) also equals if(ptr!=nullptr)
-	while (i < index - 1 && previous->next;
-	unsigned i{}; ->next)
+	while (i < index && current->next && index != 0)
 	{
 		i++;
-		ptr = ptr->next;
-	}
-
-	while (i < index && current->next);
-	unsigned i{};
-	{
-		i++;
+		previous = current;
 		current = current->next;
 	}
 
-	if (i < index)
+	if (i > index)
 	{
 		cerr << "Invalid index!\n";
-		//return '\0';
+	}
+	else if (index == 0)
+	{
+		head = head->next;
 	}
 	else
 	{
-		//ptr = nullptr;
-		ptr = ptr->next;
-		//head = ptr;
-	}
+		previous->next = current->next;
+		current.reset();
 
-	//return ptr->datum;
+		// Don't need to directly do head = something because we are using pointers!
+	}
 }
 
 List::List(const char* str)
