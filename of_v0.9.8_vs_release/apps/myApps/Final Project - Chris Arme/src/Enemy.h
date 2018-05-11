@@ -5,16 +5,19 @@
 
 class Enemy
 {
-private:
+protected:
 	float enemyRotDir;
 	float enemyRadius;
 	float enemyRotNumber;
+	float enemyRotSpd;
+	int enemyHealth;
 	ofSpherePrimitive enemyShape;
+	ofColor enemyColor;
 
 public:
 	Enemy();
 	void update(float startFrame);
-	void draw();
+	virtual void draw() = 0;
 	
 	ofVec3f getPos();
 

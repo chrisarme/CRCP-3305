@@ -9,7 +9,7 @@ void Enemies::update()
 {
 	for (int i = 0; i < enemies.size(); i++)
 	{
-		enemies[i].update(startFrame);
+		enemies[i]->update(startFrame);
 	}
 }
 
@@ -20,17 +20,32 @@ void Enemies::draw()
 
 	for (int i = 0; i < enemies.size(); i++)
 	{
-		enemies[i].draw();
+		enemies[i]->draw();
 	}
 }
 
 void Enemies::createNewEnemy()
 {
-	enemies.push_back(Enemy());
+	float randomNum = ofRandom(0, 100);
+	if (randomNum < 50)
+	{
+		enemies.push_back(new lvl1Enemy());
+	}
+	else if (randomNum > 50 && randomNum < 85)
+	{
+		enemies.push_back(new lvl2Enemy());
+	}
+	else if (randomNum > 85)
+	{
+
+	}
 }
 
 void Enemies::destroyEnemyAtIndex(int index)
 {
+	delete enemies[index];
+	enemies[index] = nullptr;
+
 	enemies.erase(enemies.begin() + index);
 }
 
@@ -41,5 +56,5 @@ int Enemies::getEnemySize()
 
 ofVec3f Enemies::getEnemyPosAtIndex(int index)
 {
-	return enemies[index].getPos();
+	return enemies[index]->getPos();
 }

@@ -2,12 +2,14 @@
 
 #include "ofMain.h"
 #include "Enemy.h"
+#include "lvl1Enemy.h"
+#include "lvl2Enemy.h"
 #include <vector>
 
 class Enemies
 {
 private:
-	vector<Enemy> enemies;
+	vector<Enemy*> enemies;
 	float startFrame;
 
 public:

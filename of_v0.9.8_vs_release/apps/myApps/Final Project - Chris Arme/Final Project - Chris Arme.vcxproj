@@ -173,6 +173,8 @@
   <ItemGroup>
     <ClCompile Include="src\Enemies.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
+    <ClCompile Include="src\lvl1Enemy.cpp" />
+    <ClCompile Include="src\lvl2Enemy.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\customCamera.cpp" />
@@ -182,6 +184,8 @@
   <ItemGroup>
     <ClInclude Include="src\Enemies.h" />
     <ClInclude Include="src\Enemy.h" />
+    <ClInclude Include="src\lvl1Enemy.h" />
+    <ClInclude Include="src\lvl2Enemy.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\customCamera.h" />
     <ClInclude Include="src\ofEasyCamMod.h" />

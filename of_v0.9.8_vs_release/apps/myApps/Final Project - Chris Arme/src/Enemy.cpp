@@ -19,7 +19,7 @@ void Enemy::update(float startFrame)
 	}
 
 	enemyRotDir = ofRandom(-1, 1) / 100;
-	enemyRotNumber += .01 + (.00000001 * (ofGetFrameNum() - startFrame));
+	enemyRotNumber += enemyRotSpd + (.00000001 * (ofGetFrameNum() - startFrame));
 
 	enemyShape.setPosition(ofVec3f(enemyRadius * (sin(enemyRotNumber)), (enemyShape.getY() - (enemyShape.getY() / enemyRadius / 10)), enemyRadius * (cos(enemyRotNumber))));
 }
